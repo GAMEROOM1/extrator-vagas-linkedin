@@ -16,12 +16,11 @@ navegador.get(url)
 vagas_disponiveis = []
 
 try :
-    espera = WebDriverWait(navegador,20)
-    fechar_popup = espera.until(EC.element_to_be_clickable((By.CLASS_NAME, "modal__dismiss")))
-    time.sleep(1)
-    fechar_popup.click()
+    espera = WebDriverWait(navegador,10)
+    fechar_popup = espera.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".modal__dismiss.btn-tertiary")))
+    navegador.execute_script("arguments[0].click();", fechar_popup)
 except Exception as e :
-    print("---Pop-Up não encontrado ---")
+    print("---Pop-Up não encontrado---")
     pass
 
 for i in range(3):
